@@ -11,7 +11,7 @@ Class {
 { #category : 'initialization' }
 HoneyGingerProfile >> initialize [
 
-	secondsToRender := 5
+	secondsToRender := 45
 ]
 
 { #category : 'running' }
@@ -27,11 +27,12 @@ HoneyGingerProfile >> renderSimulation: aMorphSimulator [
 HoneyGingerProfile >> run [
 
 	<script: 'self new run'>
-	self renderSimulation: HGSimulator rockIce.
-	"self renderSimulation: HGSimulator impossibeRiverRefraction.
+
+	self renderSimulation: HGSimulator impossibeRiverRefraction.
 	self renderSimulation: HGSimulator butterBallGraffitiAtDie.
-	self renderSimulation: HGSimulator stickyBeans"
+	self renderSimulation: HGSimulator stickyBeans
 	"self renderSimulation: HGSimulator ramen."
+	"self renderSimulation: HGSimulator rockIce."
 	"self renderSimulation: HGSimulator butterBall."
 	"self renderSimulation: HGSimulator polymer800."
 	"self renderSimulation: HGSimulator impossibeRiverBorderline."
