@@ -23,8 +23,8 @@ HoneyGingerProfile >> renderSimulation: aMorphSimulator [
 
 { #category : 'running' }
 HoneyGingerProfile >> run [
-
 	<script: 'self new run'>
+
 	self renderSimulation: HGSimulator ramen.
 	self renderSimulation: (HGSimulator graffitiInUserImage: 0.5).
 	self renderSimulation: HGSimulator jelloAtDie.
