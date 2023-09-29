@@ -1,9 +1,6 @@
 Class {
 	#name : 'BaselineOfApplicationClassificationExperiment',
 	#superclass : 'BaselineOf',
-	#instVars : [
-		'renderingTimes'
-	],
 	#category : 'BaselineOfApplicationClassificationExperiment',
 	#package : 'BaselineOfApplicationClassificationExperiment'
 }
