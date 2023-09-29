@@ -11,7 +11,7 @@ Class {
 { #category : 'initialization' }
 HoneyGingerProfile >> initialize [
 
-	secondsToRender := 45
+	secondsToRender := 120
 ]
 
 { #category : 'running' }
