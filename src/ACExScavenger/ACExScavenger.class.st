@@ -1,23 +1,23 @@
 Class {
-	#name : 'ScavengerProfile',
+	#name : 'ACExScavenger',
 	#superclass : 'Object',
 	#instVars : [
 		'incrementalGCs',
 		'fullGCs',
 		'timeGarbageCollectingInMilliseconds'
 	],
-	#category : 'Application-Classification-Experiment',
-	#package : 'Application-Classification-Experiment'
+	#category : 'ACExScavenger',
+	#package : 'ACExScavenger'
 }
 
 { #category : 'running' }
-ScavengerProfile >> run [
+ACExScavenger >> run [
 
 	self runOneGBDF
 ]
 
 { #category : 'as yet unclassified' }
-ScavengerProfile >> runOneGBDF [
+ACExScavenger >> runOneGBDF [
 	"https://www.kaggle.com/datasets/rahulbanerjee123/aws-product-length?resource=download (529
 	MB and 1.6 GB)"
 
@@ -27,7 +27,7 @@ ScavengerProfile >> runOneGBDF [
 ]
 
 { #category : 'as yet unclassified' }
-ScavengerProfile >> runThreeGBDF [
+ACExScavenger >> runThreeGBDF [
 	"https://www.kaggle.com/datasets/antoninadolgorukova/proteinrna-vs-rna-spearman-correlation-data? select=Prot-RNA_corr_63gr.csv (3.1 GB)"
 
 	self setStats.
@@ -37,7 +37,7 @@ ScavengerProfile >> runThreeGBDF [
 ]
 
 { #category : 'initialization' }
-ScavengerProfile >> setStats [
+ACExScavenger >> setStats [
 
 	incrementalGCs := Smalltalk vm incrementalGCCount.
 	fullGCs := Smalltalk vm fullGCCount.
@@ -45,7 +45,7 @@ ScavengerProfile >> setStats [
 ]
 
 { #category : 'initialization' }
-ScavengerProfile >> updateStats [
+ACExScavenger >> updateStats [
 
 	incrementalGCs := Smalltalk vm incrementalGCCount - incrementalGCs.
 	fullGCs := Smalltalk vm fullGCCount - fullGCs.

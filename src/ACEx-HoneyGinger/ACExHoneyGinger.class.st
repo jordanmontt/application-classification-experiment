@@ -1,21 +1,21 @@
 Class {
-	#name : 'HoneyGingerProfile',
+	#name : 'ACExHoneyGinger',
 	#superclass : 'Object',
 	#instVars : [
 		'secondsToRender'
 	],
-	#category : 'Application-Classification-Experiment',
-	#package : 'Application-Classification-Experiment'
+	#category : 'ACEx-HoneyGinger',
+	#package : 'ACEx-HoneyGinger'
 }
 
 { #category : 'initialization' }
-HoneyGingerProfile >> initialize [
+ACExHoneyGinger >> initialize [
 
 	secondsToRender := 120
 ]
 
 { #category : 'running' }
-HoneyGingerProfile >> renderSimulation: aMorphSimulator [
+ACExHoneyGinger >> renderSimulation: aMorphSimulator [
 
 	| renderingTime |
 	renderingTime := Time primUTCMillisecondsClock + (secondsToRender * 1000).
@@ -24,7 +24,7 @@ HoneyGingerProfile >> renderSimulation: aMorphSimulator [
 ]
 
 { #category : 'running' }
-HoneyGingerProfile >> run [
+ACExHoneyGinger >> run [
 
 	<script: 'self new run'>
 
