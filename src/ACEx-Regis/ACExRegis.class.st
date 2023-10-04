@@ -8,17 +8,10 @@ Class {
 	#package : 'ACEx-Regis'
 }
 
-{ #category : 'initialization' }
-ACExRegis >> initialize [
-
-	super initialize.
-	registerMockData := 100
-]
-
 { #category : 'running' }
 ACExRegis >> run [
 
 	ESUGSetUp start.
-	registerMockData timesRepeat: [ ERTest generateDataForTest ].
+	ERTest generateALotDataForTest "It inserts 110 people in total"
 	"ESUGSetUp stop."
 ]
