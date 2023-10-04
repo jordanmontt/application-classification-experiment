@@ -37,10 +37,11 @@ ERTest class >> generateALotDataForTest [
 
 	"Copying the original method's generateDataForTest logic"
 	instance := self new.
-	"Register 5 attendees"
-	instance registerAttendees: (emailAddresses removeFirst: 10).
-	"Register groups of people with a manager"
 	[ emailAddresses isEmpty ] whileFalse: [
-		instance registerGroupWithGroupManager: (emailAddresses removeFirst: 1)
+		"Register 5 attendees"
+		instance registerAttendees: (emailAddresses removeFirst: 5).
+		"Register groups of people with a manager"
+		instance
+			registerGroupWithGroupManager: emailAddresses removeFirst
 			listOfAttendees: (emailAddresses removeFirst: 4) ]
 ]
