@@ -1,9 +1,6 @@
 Class {
 	#name : 'ACExRegis',
 	#superclass : 'Object',
-	#instVars : [
-		'registerMockData'
-	],
 	#category : 'ACEx-Regis',
 	#package : 'ACEx-Regis'
 }
