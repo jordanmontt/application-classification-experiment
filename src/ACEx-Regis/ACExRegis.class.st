@@ -9,6 +9,6 @@ Class {
 ACExRegis >> run [
 
 	ESUGSetUp start.
-	ERTest generateALotDataForTest. "It inserts 4000 people in total"
+	ERTest generateALotDataForTest. "It inserts 400 people in total"
 	ESUGSetUp stop.
 ]
