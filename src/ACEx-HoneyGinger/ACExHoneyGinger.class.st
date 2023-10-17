@@ -2,7 +2,7 @@ Class {
 	#name : 'ACExHoneyGinger',
 	#superclass : 'Object',
 	#instVars : [
-		'secondsToRender'
+		'renderingCycles'
 	],
 	#category : 'ACEx-HoneyGinger',
 	#package : 'ACEx-HoneyGinger'
@@ -11,15 +11,13 @@ Class {
 { #category : 'initialization' }
 ACExHoneyGinger >> initialize [
 
-	secondsToRender := 120
+	renderingCycles := 1000
 ]
 
 { #category : 'running' }
 ACExHoneyGinger >> renderSimulation: aMorphSimulator [
 
-	| renderingTime |
-	renderingTime := Time primUTCMillisecondsClock + (secondsToRender * 1000).
-	[ Time primUTCMillisecondsClock > renderingTime ]  whileFalse: [ WorldMorph doOneCycle ].
+	renderingCycles timesRepeat: [ WorldMorph doOneCycle ].
 	aMorphSimulator window close
 ]
 
