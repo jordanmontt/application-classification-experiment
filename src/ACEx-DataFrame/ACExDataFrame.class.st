@@ -14,8 +14,18 @@ Class {
 ACExDataFrame >> run [
 
 	"self setStats."
-	self runOneGBDF
+	self runHalfGBDF
 	"self updateStats"
+]
+
+{ #category : 'running' }
+ACExDataFrame >> runHalfGBDF [
+	"https://www.kaggle.com/datasets/rahulbanerjee123/aws-product-length?resource=download (529
+	MB and 1.6 GB)"
+
+	DataFrame readFromCsv:
+		'/Users/sebastian/Documents/Git-Clones/lapack-experiment/data/very_small_dataset.csv'
+			asFileReference
 ]
 
 { #category : 'running' }
