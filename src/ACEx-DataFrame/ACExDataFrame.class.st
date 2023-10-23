@@ -53,7 +53,7 @@ ACExDataFrame >> runTinyDF [
 ACExDataFrame >> runTinyOneHundredTimesDF [
 	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
 	at https://github.com/jordanmontt/lapack-experiment.
-	It weights 2.3 MB. It has 20000 rows and 5 columns. It contains only numbers"
+	It weights 230 MB. It has 2000000 rows and 5 columns. It contains only numbers"
 
 	DataFrame readFromCsv:
 		'/Users/sebastian/Documents/Experiments/ACEx/Synthetic Dataset/tiny_one_hundred_times_larger_dataset.csv'
@@ -64,7 +64,7 @@ ACExDataFrame >> runTinyOneHundredTimesDF [
 ACExDataFrame >> runTinyTenTimesDF [
 	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
 	at https://github.com/jordanmontt/lapack-experiment.
-	It weights 2.3 MB. It has 20000 rows and 5 columns. It contains only numbers"
+	It weights 23 MB. It has 200000 rows and 5 columns. It contains only numbers"
 
 	DataFrame readFromCsv:
 		'/Users/sebastian/Documents/Experiments/ACEx/Synthetic Dataset/tiny_ten_times_larger_dataset.csv'
