@@ -50,6 +50,17 @@ ACExDataFrame >> runTinyDF [
 ]
 
 { #category : 'running' }
+ACExDataFrame >> runTinyFiftyTimesDF [
+	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
+	at https://github.com/jordanmontt/lapack-experiment.
+	It weights 23 MB. It has 1000000 rows and 5 columns. It contains only numbers"
+
+	DataFrame readFromCsv:
+		'/Users/sebastian/Documents/Experiments/ACEx/Synthetic Dataset/tiny_fifty_times_larger_dataset.csv'
+			asFileReference
+]
+
+{ #category : 'running' }
 ACExDataFrame >> runTinyOneHundredTimesDF [
 	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
 	at https://github.com/jordanmontt/lapack-experiment.
