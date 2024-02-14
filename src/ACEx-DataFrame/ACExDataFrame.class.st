@@ -29,6 +29,15 @@ ACExDataFrame >> runOneGBDF [
 ]
 
 { #category : 'running' }
+ACExDataFrame >> runProtein1dot14GB [
+	
+
+	DataFrame readFromCsv:
+		'/Users/sebastian/Documents/Experiments/ACEx/CITEseq22 Protein-RNA vs RNA Spearman cor data/Prot-RNA_corr_21gr.csv'
+			asFileReference
+]
+
+{ #category : 'running' }
 ACExDataFrame >> runThreeGBDF [
 	"https://www.kaggle.com/datasets/antoninadolgorukova/proteinrna-vs-rna-spearman-correlation-data? select=Prot-RNA_corr_63gr.csv (3.1 GB)"
 
