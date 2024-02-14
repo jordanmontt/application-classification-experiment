@@ -36,45 +36,6 @@ def filter_by_top_allocated(a_df):
         dataframes.append(a_df[ a_df['allocatedObjectClass'] == object_class ])
     return top_allocated_classes, dataframes
 
-# PLOTTING
-
-def plot_densities_by_class(df, title, criterion, xlabel, logy=False):
-    top_allocated_classes, dataframes = filter_by_top_allocated(df)
-
-    fig, ax = plt.subplots(1,1)
-    for a_df in dataframes:
-        a_df[criterion].plot(kind='density', logy=logy)
-    
-    fig.suptitle(title)
-    fig.supxlabel(xlabel)
-    fig.legend(top_allocated_classes)
-    return fig
-
-def plot_accumulated_density(df, title, criterion, logy, xlabel):
-    return df[criterion].plot(kind='density', logy=logy, title=title, xlabel=xlabel)
-
-def plot_accumulated_density_by_lifetime(df, title, logy=False):
-    if(logy):
-        title = title , ' (logY)'
-    return plot_accumulated_density(df, title, 'lifetime', logy, LIFETIME_X_LABEL)
-
-def plot_accumulated_density_by_gcs(df, title, logy=False,):
-    if(logy):
-        title = title , ' (logY)'
-    return plot_accumulated_density(df, title, 'survivedFullGC', logy, FULL_GCS_X_LABEL)
-
-def plot_accumulated_density_comparison(df1, df2, criterion, logy=False):
-    title = 'Object''s lifetime density'
-    if(logy):
-        title = title , ' (logY)'
-
-    fig, ax = plt.subplots(1,1)
-    df1[criterion].plot(kind='density', logy=logy)
-    df2[criterion].plot(kind='density', logy=logy)
-    fig.supxlabel(get_xlabel_for_criterion(criterion))
-    fig.suptitle(title)
-    fig.legend(['100% sampling', '1% sampling'])
-
 # DATAFRAME
 
 def load_df(df_path, metadata_path):
@@ -87,9 +48,11 @@ def load_df(df_path, metadata_path):
     meta_data_of_df['totalExecutionTime'] = meta_data_of_df['totalExecutionTime'] / 1000000 # to convert to seconds
     # Add relative survived gc cycles
     a_df['relativeSurvivedGCCycles'] = a_df['survivedFullGC'].transform((lambda x : x / meta_data_of_df['totalFullGCs'] * 100 if x <= meta_data_of_df['totalFullGCs'] else 100) )
+    # Add relative survived scavenges
+    a_df['relativeSurvivedScavenges'] = a_df['survivedScavenges'].transform((lambda x : x / meta_data_of_df['totalScavenges'] * 100 if x <= meta_data_of_df['totalScavenges'] else 100) )
     # Add relative lifetime in seconds
-    a_df['relativeLifetime'] = (a_df['finalizationTime'] - a_df['initializationTime']) / 1000000 # to convert to seconds
-    a_df['relativeLifetime'] = a_df['relativeLifetime'].transform((lambda x : x / meta_data_of_df['totalExecutionTime'] * 100 if x <= meta_data_of_df['totalExecutionTime'] else 100) )
+    a_df['lifetime'] = (a_df['finalizationTime'] - a_df['initializationTime']) / 1000000 # to convert to seconds
+    a_df['relativeLifetime'] = a_df['lifetime'].transform((lambda x : x / meta_data_of_df['totalExecutionTime'] * 100 if x <= meta_data_of_df['totalExecutionTime'] else 100) )
 
     return a_df, meta_data_of_df
 
@@ -101,25 +64,29 @@ def print_table_allocations_average_lifetimes(df_title, a_df, metadata_df):
     total_instances = len(a_df.index)
     total_execution_time = metadata_df['totalExecutionTime']
     total_full_gcs = metadata_df['totalFullGCs']
+    total_scavenges = metadata_df['totalScavenges']
 
     print('Sampling rate:', str(metadata_df['sampligRate']))
     print('Total instances: ', str(total_instances))
     print('Total execution time:', str(total_execution_time))
     print('Total full GCs: ', str(total_full_gcs))
+    print('Total scavenges: ', str(total_scavenges))
     print('----------')
 
     my_list = []
-    headers = ['Allocated object class', 'Instances', 'Avg lifetime', 'Avg GC cycles']
+    headers = ['Allocated object class', 'Instances', 'Avg lifetime', 'Avg GC cycles', 'Avg Scavenges']
     for a_df in filtered_dfs:
         relative_instances = (len(a_df.index) / total_instances) * 100
-        relative_full_gcs = (a_df['survivedFullGC'].mean() / total_full_gcs) * 100
-        relative_lifetime = (a_df['lifetime'].mean() / total_execution_time) * 100
+        relative_full_gcs = a_df['relativeSurvivedGCCycles'].mean()
+        relative_lifetime = a_df['relativeLifetime'].mean()
+        relative_scavenges = a_df['relativeSurvivedScavenges'].mean()
 
         relative_instances = str(round(relative_instances, 2)) + '%'
         relative_lifetime = str(round(relative_lifetime, 2)) + '%'
         relative_full_gcs = str(round(relative_full_gcs, 2)) + '%'
+        relative_scavenges = str(round(relative_scavenges, 2)) + '%'
 
-        my_list.append([a_df.iloc[0]['allocatedObjectClass'], relative_instances, relative_lifetime, relative_full_gcs])
+        my_list.append([a_df.iloc[0]['allocatedObjectClass'], relative_instances, relative_lifetime, relative_full_gcs, relative_scavenges])
     
     print(tabulate(my_list, headers=headers))
     print()
