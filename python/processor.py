@@ -3,19 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
-# CONSTANTS
-LIFETIME_X_LABEL = 'Lifetime in seconds'
-FULL_GCS_X_LABEL = 'Lifetime in survived GC cycles'
-
-#Functions
-
-# HELPERS
-
-def get_xlabel_for_criterion(criterion):
-    if(criterion == 'survivedFullGC'):
-        return FULL_GCS_X_LABEL
-    else:
-        return LIFETIME_X_LABEL
 
 def get_top_allocated_classes(a_dataframe):
     # Returns a list with the classes that were allocated the most.
@@ -38,13 +25,15 @@ def filter_by_top_allocated(a_df):
 
 # DATAFRAME
 
-def load_df(df_path, metadata_path):
-    # Load df
-    a_df = pd.read_csv(df_path)
-    # Load metadata
+def load_df(base_path):
+    csv_path = base_path + '.csv'
+    metadata_path = base_path + '.json'
+
+    a_df = pd.read_csv(csv_path)
     f = open(metadata_path)
     meta_data_of_df = json.load(f)
     f.close()
+
     meta_data_of_df['totalExecutionTime'] = meta_data_of_df['totalExecutionTime'] / 1000000 # to convert to seconds
     # Add relative survived gc cycles
     a_df['relativeSurvivedGCCycles'] = a_df['survivedFullGC'].transform((lambda x : x / meta_data_of_df['totalFullGCs'] * 100 if x <= meta_data_of_df['totalFullGCs'] else 100) )
