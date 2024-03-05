@@ -47,7 +47,7 @@ def plot_relative_frequencies_histogram_comparison(df_100, df_50, df_1, df_100_a
 
 ### By class 
 
-def plot_lifetime_frequencies_by_class(top_allocated_classes, df_100, df_50, df_1, title):
+def plot_lifetime_frequencies_by_class(top_allocated_classes, df_100, df_50, df_1, title, with_class_labels=True):
     ncols = 3
     fig, axs = plt.subplots(5, ncols, figsize=(5, 7))
     fig.suptitle(title, fontsize=16)
@@ -59,7 +59,8 @@ def plot_lifetime_frequencies_by_class(top_allocated_classes, df_100, df_50, df_
         plot_for_top_allocated_class(df_100, top_allocated_class, axs[idx, 0], (1 + ncols * idx))
         plot_for_top_allocated_class(df_50, top_allocated_class, axs[idx, 1], (2 + ncols * idx))
         plot_for_top_allocated_class(df_1, top_allocated_class, axs[idx, 2], (3 + ncols * idx))
-        axs[idx, 0].set_ylabel(top_allocated_class, fontsize=12)
+        if with_class_labels:
+            axs[idx, 0].set_ylabel(top_allocated_class, fontsize=12)
 
     plt.tight_layout()
     plt.show()
@@ -70,19 +71,3 @@ def plot_for_top_allocated_class(a_df, top_allocated_class, an_axs, grid_positio
     plt.subplot(5, 3, grid_position)
     ax = sns.histplot(filtered_df['relativeLifetime'] , stat="percent", bins=3)
     ax.set(ylabel="", xlabel="", xlim=(-5, 105), ylim=(0, 100), xticks=[0, 50, 100])
-
-def plot_lifetime_frequencies_by_class_comparison(title, df_100, df_50, df_1, df_100_a, df_50_a, df_1_a):
-    ncols = 6
-    fig, axs = plt.subplots(3, ncols, figsize=(5, 7))
-    fig.suptitle(title, fontsize=16)
-    axs[0, 0].set_title("Sampling 100%")
-    axs[0, 1].set_title("Sampling 50%")
-    axs[0, 2].set_title("Sampling 1%")
-
-    for idx, top_allocated_class in enumerate(top_allocated_classes[:3]):
-        plot_for_top_allocated_class(df_100, top_allocated_class, axs[idx, 0], (1 + ncols * idx))
-        plot_for_top_allocated_class(df_50, top_allocated_class, axs[idx, 1], (2 + ncols * idx))
-        plot_for_top_allocated_class(df_1, top_allocated_class, axs[idx, 2], (3 + ncols * idx))
-        axs[idx, 0].set_ylabel(top_allocated_class, fontsize=12)
-
-    
