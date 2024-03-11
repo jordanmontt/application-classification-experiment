@@ -19,7 +19,7 @@ ACExDataFrame >> run [
 ]
 
 { #category : 'running' }
-ACExDataFrame >> runOneGBDF [
+ACExDataFrame >> runAWS1dot6GB [
 	"https://www.kaggle.com/datasets/rahulbanerjee123/aws-product-length?resource=download (529
 	MB and 1.6 GB)"
 
@@ -30,7 +30,7 @@ ACExDataFrame >> runOneGBDF [
 
 { #category : 'running' }
 ACExDataFrame >> runProtein1dot14GB [
-	
+	"1.14 GB"
 
 	DataFrame readFromCsv:
 		'/Users/sebastian/Documents/Experiments/ACEx/CITEseq22 Protein-RNA vs RNA Spearman cor data/Prot-RNA_corr_21gr.csv'
@@ -38,7 +38,7 @@ ACExDataFrame >> runProtein1dot14GB [
 ]
 
 { #category : 'running' }
-ACExDataFrame >> runThreeGBDF [
+ACExDataFrame >> runProtein3GB [
 	"https://www.kaggle.com/datasets/antoninadolgorukova/proteinrna-vs-rna-spearman-correlation-data? select=Prot-RNA_corr_63gr.csv (3.1 GB)"
 
 	self setStats.
