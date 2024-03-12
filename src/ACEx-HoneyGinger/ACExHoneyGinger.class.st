@@ -11,7 +11,7 @@ Class {
 { #category : 'initialization' }
 ACExHoneyGinger >> initialize [
 
-	renderingCycles := 1000
+	renderingCycles := 600
 ]
 
 { #category : 'running' }
@@ -23,20 +23,27 @@ ACExHoneyGinger >> renderSimulation: aMorphSimulator [
 
 { #category : 'running' }
 ACExHoneyGinger >> run [
-
+	
 	<script: 'self new run'>
 
-	self renderSimulation: HGSimulator impossibeRiverRefraction.
-	self renderSimulation: HGSimulator butterBallGraffitiAtDie.
-	self renderSimulation: HGSimulator stickyBeans
+	"Simulations to use"
+	self renderSimulation: HGSimulator butterBallGraffitiAtDie
 	"self renderSimulation: HGSimulator ramen."
-	"self renderSimulation: HGSimulator rockIce."
 	"self renderSimulation: HGSimulator butterBall."
-	"self renderSimulation: HGSimulator polymer800."
-	"self renderSimulation: HGSimulator impossibeRiverBorderline."
+	
+	"Stop moving eventually"
 	"self renderSimulation: HGSimulator rockAtDie."
-	"self renderSimulation: (HGSimulator graffitiInUserImage: 0.5)."
 	"self renderSimulation: HGSimulator jelloAtDie."
+
+	"Morphic world and custom forms"
+	"self renderSimulation: HGSimulator stickyBeans"
+	"self renderSimulation: HGSimulator impossibeRiverRefraction."
+
+	"Mouse interaction"
 	"self renderSimulation: HGSimulator liquidOxgen."
 	"self renderSimulation: HGSimulator impossibeRiverPolygon."
+	"self renderSimulation: HGSimulator polymer800."
+	"self renderSimulation: HGSimulator impossibeRiverBorderline."
+	"self renderSimulation: (HGSimulator graffitiInUserImage: 0.5)."
+	"self renderSimulation: HGSimulator rockIce."
 ]
