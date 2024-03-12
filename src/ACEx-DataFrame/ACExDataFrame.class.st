@@ -39,8 +39,7 @@ ACExDataFrame >> runProtein3GB [
 
 { #category : 'synthetic' }
 ACExDataFrame >> runSynthetic [
-	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
-	at https://github.com/jordanmontt/lapack-experiment.
+	"This is a small synthetic dataset generated using make_regression of sklearn.
 	It weights 2.3 MB. It has 20000 rows and 5 columns. It contains only numbers"
 
 	DataFrame readFromCsv:
@@ -61,8 +60,7 @@ ACExDataFrame >> runSyntheticFiftyTimes [
 
 { #category : 'synthetic' }
 ACExDataFrame >> runSyntheticOneHundredTimes [
-	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
-	at https://github.com/jordanmontt/lapack-experiment.
+	"This is a small synthetic dataset generated using make_regression of sklearn.
 	It weights 230 MB. It has 2000000 rows and 5 columns. It contains only numbers"
 
 	DataFrame readFromCsv:
@@ -72,8 +70,7 @@ ACExDataFrame >> runSyntheticOneHundredTimes [
 
 { #category : 'synthetic' }
 ACExDataFrame >> runSyntheticTenTimes [
-	"This is a small synthetic dataset generated using make_regression of sklearn. The code is
-	at https://github.com/jordanmontt/lapack-experiment.
+	"This is a small synthetic dataset generated using make_regression of sklearn.
 	It weights 23 MB. It has 200000 rows and 5 columns. It contains only numbers"
 
 	DataFrame readFromCsv:
