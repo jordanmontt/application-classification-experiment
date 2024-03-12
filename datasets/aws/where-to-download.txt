@@ -1,0 +1,4 @@
+Download the dataset from:
+https://www.kaggle.com/datasets/rahulbanerjee123/aws-product-length?resource=download
+
+Then, extract the data and put it into this folder

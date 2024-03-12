@@ -1,0 +1,7 @@
+CITEseq22: Protein/RNA vs RNA Spearman cor data
+
+The dataset for Open Problems - Multimodal Single-Cell Integration competition (CITEseq2022) comprises single-cell multiomics data (n = 70988 cells) collected from mobilized peripheral CD34+ hematopoietic stem and progenitor cells (HSPCs) isolated from healthy human donors.
+
+Download the dataset from the link below and extract the content into this folder.
+
+https://www.kaggle.com/datasets/antoninadolgorukova/proteinrna-vs-rna-spearman-correlation-data/
