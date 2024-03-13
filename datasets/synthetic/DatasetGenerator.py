@@ -10,7 +10,7 @@ def generate_dataset(number_rows, number_columns):
 
 def write_dataset_to_disk(dataset, dataset_name):
     df = pandas.DataFrame(dataset)
-    path = '../data/' + dataset_name
+    path = '/Users/sebastian/Documents/Experiments/ACEx/Synthetic Dataset/' + dataset_name
     df.to_csv(path_or_buf=path, index=False, header=False)
 
 
