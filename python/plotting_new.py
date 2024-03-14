@@ -51,7 +51,7 @@ def plot_relative_frequencies_histogram_comparison(df_100, df_50, df_1, df_01, d
 
 ### By class
 
-def plot_lifetime_frequencies_by_class(df_100, df_50, df_1, df_01, top_allocated_classes, title, with_class_labels=True):
+def plot_lifetime_frequencies_by_class(df_100, df_50, df_1, df_01, title, with_class_labels):
     ncols = 4
     fig, axs = plt.subplots(5, ncols, figsize=(9, 9))
     fig.suptitle(title, fontsize=16)
@@ -61,52 +61,53 @@ def plot_lifetime_frequencies_by_class(df_100, df_50, df_1, df_01, top_allocated
     axs[0, 3].set_title("Sampling 0.1%")
 
     # First class
-    plot_for_top_allocated_class(df_100, top_allocated_classes[0], axs[0, 0], bins=2)
-    plot_for_top_allocated_class(df_50, top_allocated_classes[0], axs[0, 1], bins= 3)
-    plot_for_top_allocated_class(df_1, top_allocated_classes[0], axs[0, 2], bins=3)
-    plot_for_top_allocated_class(df_01, top_allocated_classes[0], axs[0, 3], bins=1)
+    plot_for_top_allocated_class(df_100, 'Fraction', axs[0, 0], bins=1)
+    plot_for_top_allocated_class(df_50, 'Fraction', axs[0, 1], bins= 1)
+    plot_for_top_allocated_class(df_1, 'Fraction', axs[0, 2], bins=1)
+    plot_for_top_allocated_class(df_01, 'Fraction', axs[0, 3], bins=1)
     if with_class_labels:
-        axs[0, 0].set_ylabel(top_allocated_classes[0], fontsize=12)
+        axs[0, 0].set_ylabel('Fraction', fontsize=12)
     
     # Second class
-    plot_for_top_allocated_class(df_100, top_allocated_classes[1], axs[1, 0], bins=2)
-    plot_for_top_allocated_class(df_50, top_allocated_classes[1], axs[1, 1], bins=3)
-    plot_for_top_allocated_class(df_1, top_allocated_classes[1], axs[1, 2], bins=5)
-    plot_for_top_allocated_class(df_01, top_allocated_classes[1], axs[1, 3], bins=1)
+    plot_for_top_allocated_class(df_100, 'NumberParser', axs[1, 0], bins=2)
+    plot_for_top_allocated_class(df_50, 'NumberParser', axs[1, 1], bins=3)
+    plot_for_top_allocated_class(df_1, 'NumberParser', axs[1, 2], bins=3)
+    plot_for_top_allocated_class(df_01, 'NumberParser', axs[1, 3], bins=1)
     if with_class_labels:
-        axs[1, 0].set_ylabel(top_allocated_classes[1], fontsize=12)
+        axs[1, 0].set_ylabel('NumberParser', fontsize=12)
 
     # Third class
-    plot_for_top_allocated_class(df_100, top_allocated_classes[2], axs[2, 0], bins=1)
-    plot_for_top_allocated_class(df_50, top_allocated_classes[2], axs[2, 1], bins=1)
-    plot_for_top_allocated_class(df_1, top_allocated_classes[2], axs[2, 2], bins=1)
-    plot_for_top_allocated_class(df_01, top_allocated_classes[2], axs[2, 3], bins=1)
+    plot_for_top_allocated_class(df_100, 'ReadStream', axs[2, 0], bins=2)
+    plot_for_top_allocated_class(df_50, 'ReadStream', axs[2, 1], bins=3)
+    plot_for_top_allocated_class(df_1, 'ReadStream', axs[2, 2], bins=5)
+    plot_for_top_allocated_class(df_01, 'ReadStream', axs[2, 3], bins=1)
     if with_class_labels:
-        axs[2, 0].set_ylabel(top_allocated_classes[2], fontsize=12)
+        axs[2, 0].set_ylabel('ReadStream', fontsize=12)
 
     # Fourth class
-    plot_for_top_allocated_class(df_100, top_allocated_classes[3], axs[3, 0], bins=4)
-    plot_for_top_allocated_class(df_50, top_allocated_classes[3], axs[3, 1], bins=4)
-    plot_for_top_allocated_class(df_1, top_allocated_classes[3], axs[3, 2])
-    plot_for_top_allocated_class(df_01, top_allocated_classes[3], axs[3, 3])
+    plot_for_top_allocated_class(df_100, 'ByteString', axs[3, 0], bins=4)
+    plot_for_top_allocated_class(df_50, 'ByteString', axs[3, 1], bins=4)
+    plot_for_top_allocated_class(df_1, 'ByteString', axs[3, 2])
+    plot_for_top_allocated_class(df_01, 'ByteString', axs[3, 3])
     if with_class_labels:
-        axs[3, 0].set_ylabel(top_allocated_classes[3], fontsize=12)
+        axs[3, 0].set_ylabel('ByteString', fontsize=12)
 
     # Fifth class
-    plot_for_top_allocated_class(df_100, top_allocated_classes[4], axs[4, 0], bins=4)
-    plot_for_top_allocated_class(df_50, top_allocated_classes[4], axs[4, 1], bins=4)
-    plot_for_top_allocated_class(df_1, top_allocated_classes[4], axs[4, 2], bins=4)
-    plot_for_top_allocated_class(df_01, top_allocated_classes[4], axs[4, 3], bins=4)
+    plot_for_top_allocated_class(df_100, 'Array', axs[4, 0], bins=4)
+    plot_for_top_allocated_class(df_50, 'Array', axs[4, 1], bins=4)
+    plot_for_top_allocated_class(df_1, 'Array', axs[4, 2], bins=4)
+    plot_for_top_allocated_class(df_01, 'Array', axs[4, 3], bins=4)
     if with_class_labels:
-        axs[4, 0].set_ylabel(top_allocated_classes[4], fontsize=12)
+        axs[4, 0].set_ylabel('Array', fontsize=12)
 
     plt.tight_layout()
     plt.show()
 
-def plot_lifetime_frequencies_by_class_actionable(df_100, df_50, df_1, df_01, top_allocated_classes, title):
+def plot_lifetime_frequencies_by_class_actionable(df_100, df_50, df_1, df_01, title, with_class_labels):
     ncols = 4
-    fig, axs = plt.subplots(5, ncols, figsize=(9, 9))
+    fig, axs = plt.subplots(3, ncols, figsize=(9, 9))
     fig.suptitle(title, fontsize=16)
+    top_allocated_classes = ['Fraction', 'NumberParser', 'ReadStream']
     axs[0, 0].set_title("Sampling 100%")
     axs[0, 1].set_title("Sampling 50%")
     axs[0, 2].set_title("Sampling 1%")
@@ -117,6 +118,8 @@ def plot_lifetime_frequencies_by_class_actionable(df_100, df_50, df_1, df_01, to
         plot_for_top_allocated_class(df_50, top_allocated_class, axs[idx, 1])
         plot_for_top_allocated_class(df_1, top_allocated_class, axs[idx, 2])
         plot_for_top_allocated_class(df_01, top_allocated_class, axs[idx, 3])
+        if with_class_labels:
+            axs[idx, 0].set_ylabel(top_allocated_class, fontsize=12)
 
     plt.tight_layout()
     plt.show()
