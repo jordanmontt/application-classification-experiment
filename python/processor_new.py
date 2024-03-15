@@ -1,7 +1,6 @@
 import json
 import pandas as pd
-import matplotlib.pyplot as plt
-import tabulate
+from tabulate import tabulate
 
 
 def get_top_allocated_classes(a_dataframe):
@@ -11,7 +10,7 @@ def get_top_allocated_classes(a_dataframe):
     percs = a_dataframe['allocatedObjectClass'].value_counts(normalize=True)
     # Get classes that were allocated and that represent at least 1% of the total allocations (calculating by number of allocations)
     counts_and_percs = pd.concat([counts, percs], axis=1, keys=['count', 'percentage'])
-    top_allocated = counts_and_percs[ counts_and_percs['percentage'] >= 0.01 ]
+    top_allocated = counts_and_percs[ counts_and_percs['percentage'] >= 0.001 ]
     #convert to a list
     return top_allocated.axes[0].tolist()
 
@@ -61,7 +60,7 @@ def print_table_allocations_average_lifetimes(df_title, a_df, metadata_df):
     print('Total execution time:', str(total_execution_time))
     print('Total full GCs: ', str(total_full_gcs))
     print('Total scavenges: ', str(total_scavenges))
-    print('Total allocated memory: ', str(total_allocated_memory / 1024 / 1024), ' GiB')
+    print('Total allocated memory: ', str(total_allocated_memory / 1024 / 1024 / 1024), ' GiB') # in Bytes
     print('----------')
 
     my_list = []
