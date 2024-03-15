@@ -10,7 +10,7 @@ def get_top_allocated_classes(a_dataframe):
     percs = a_dataframe['allocatedObjectClass'].value_counts(normalize=True)
     # Get classes that were allocated and that represent at least 1% of the total allocations (calculating by number of allocations)
     counts_and_percs = pd.concat([counts, percs], axis=1, keys=['count', 'percentage'])
-    top_allocated = counts_and_percs[ counts_and_percs['percentage'] >= 0.001 ]
+    top_allocated = counts_and_percs[ counts_and_percs['percentage'] >= 0.01 ]
     #convert to a list
     return top_allocated.axes[0].tolist()
 
@@ -55,7 +55,7 @@ def print_table_allocations_average_lifetimes(df_title, a_df, metadata_df):
     total_scavenges = metadata_df['totalScavenges']
     total_allocated_memory = a_df['sizeInBytes'].sum()
 
-    print('Sampling rate:', str(metadata_df['sampligRate']))
+    print('Sampling rate:', str(metadata_df['samplingRate']))
     print('Total instances: ', str(total_instances))
     print('Total execution time:', str(total_execution_time))
     print('Total full GCs: ', str(total_full_gcs))
