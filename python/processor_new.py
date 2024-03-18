@@ -55,7 +55,7 @@ def print_table_allocations_average_lifetimes(df_title, a_df, metadata_df):
     total_scavenges = metadata_df['totalScavenges']
     total_allocated_memory = a_df['sizeInBytes'].sum()
 
-    print('Sampling rate:', str(metadata_df['samplingRate']))
+    print('Sampling rate:', str(metadata_df['sampligRate']))
     print('Total instances: ', str(total_instances))
     print('Total execution time:', str(total_execution_time))
     print('Total full GCs: ', str(total_full_gcs))
