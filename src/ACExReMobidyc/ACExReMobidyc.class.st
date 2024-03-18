@@ -37,7 +37,5 @@ ACExReMobidyc >> startProfiling [
 { #category : 'running' }
 ACExReMobidyc >> stopProfiling [
 
-	profiler
-		stopProfiling;
-		open
+	profiler stopProfiling
 ]
