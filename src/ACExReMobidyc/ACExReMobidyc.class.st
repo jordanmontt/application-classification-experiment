@@ -43,7 +43,9 @@ ACExReMobidyc >> run: nonSense [
 		multiplicity: 4;
 		randomSeed: 1.
 	metainterpreter := RMDMetaInterpreter forDryRunOn: model.
-	metainterpreter announcer when: RMDSimulationPaused do: [ self stopProfiling ] for: self.
+	metainterpreter announcer when: RMDSimulationPaused do: [
+		self stopProfiling.
+		self exportData ] for: self.
 	metainterpreter openInExperimentarium presenter runSimulation
 ]
 
