@@ -8,14 +8,33 @@ Class {
 	#package : 'ACExReMobidyc'
 }
 
-{ #category : 'running' }
+{ #category : 'as yet unclassified' }
+ACExReMobidyc >> exportData [
+
+	profiler exportData
+]
+
+{ #category : 'initialization' }
+ACExReMobidyc >> initialize [
+
+	super initialize.
+	profiler := IllFinalizationProfiler new
+]
+
+{ #category : 'as yet unclassified' }
 ACExReMobidyc >> profiler: aProfiler [
 
 	profiler := aProfiler
 ]
 
-{ #category : 'running' }
+{ #category : 'as yet unclassified' }
 ACExReMobidyc >> run [
+
+	self run: nil
+]
+
+{ #category : 'as yet unclassified' }
+ACExReMobidyc >> run: nonSense [
 
 	| model metainterpreter |
 	self startProfiling.
@@ -24,20 +43,26 @@ ACExReMobidyc >> run [
 		multiplicity: 4;
 		randomSeed: 1.
 	metainterpreter := RMDMetaInterpreter forDryRunOn: model.
-	metainterpreter announcer when: RMDSimulationPaused do: [ self stopProfiling ] for: self.
+	metainterpreter announcer when: RMDSimulationPaused do: [
+		self stopProfiling.
+		self exportData ] for: self.
 	metainterpreter openInExperimentarium presenter runSimulation
 ]
 
-{ #category : 'running' }
+{ #category : 'as yet unclassified' }
+ACExReMobidyc >> samplingRate: aSamplingRate [
+
+	profiler samplingRate: aSamplingRate
+]
+
+{ #category : 'as yet unclassified' }
 ACExReMobidyc >> startProfiling [
 
 	profiler startProfiling
 ]
 
-{ #category : 'running' }
+{ #category : 'as yet unclassified' }
 ACExReMobidyc >> stopProfiling [
 
-	profiler
-		stopProfiling;
-		open
+	profiler stopProfiling
 ]
