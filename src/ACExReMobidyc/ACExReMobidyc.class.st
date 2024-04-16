@@ -1,9 +1,6 @@
 Class {
 	#name : 'ACExReMobidyc',
 	#superclass : 'Object',
-	#instVars : [
-		'profiler'
-	],
 	#category : 'ACExReMobidyc',
 	#package : 'ACExReMobidyc'
 }
