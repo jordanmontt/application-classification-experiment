@@ -10,6 +10,12 @@ Class {
 	#package : 'ACEx-DataFrame'
 }
 
+{ #category : 'synthetic' }
+ACExDataFrame >> run [
+
+	self runSyntheticOneHundredTimes
+]
+
 { #category : 'aws' }
 ACExDataFrame >> runAWS1dot6GB [
 	"https://www.kaggle.com/datasets/rahulbanerjee123/aws-product-length?resource=download (529
@@ -63,9 +69,9 @@ ACExDataFrame >> runSyntheticOneHundredTimes [
 	"This is a small synthetic dataset generated using make_regression of sklearn.
 	It weights 230 MB. It has 2000000 rows and 5 columns. It contains only numbers"
 
-	DataFrame readFromCsv:
-		'/Users/sebastian/Documents/Experiments/ACEx/Synthetic Dataset/tiny_one_hundred_times_larger_dataset.csv'
-			asFileReference
+	| file |
+	file := (FileLocator imageDirectory / 'tiny_one_hundred_times_larger_dataset.csv') asFileReference.
+	DataFrame readFromCsv: file
 ]
 
 { #category : 'synthetic' }
