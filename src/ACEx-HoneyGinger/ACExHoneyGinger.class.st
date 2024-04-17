@@ -23,8 +23,6 @@ ACExHoneyGinger >> renderSimulation: aMorphSimulator [
 
 { #category : 'running' }
 ACExHoneyGinger >> run [
-	
-	<script: 'self new run'>
 
 	"Simulations to use"
 	self renderSimulation: HGSimulator butterBallGraffitiAtDie
