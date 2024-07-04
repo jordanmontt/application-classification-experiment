@@ -14,7 +14,7 @@ BaselineOfACExReMobidyc >> baseline: spec [
 
 		"External dependencies"
 		spec baseline: 'ReMobidyc'
-			with: [ spec repository: 'github://ReMobidyc/ReMobidyc/src:main' ].
+			with: [ spec repository: 'github://ReMobidyc/ReMobidyc:main/src' ].
 
 		"Linking external dependencies"
 		spec package: 'ACEx-ReMobidyc' with: [ spec requires: #( 'ReMobidyc' ) ].
