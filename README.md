@@ -1,6 +1,6 @@
 # Evaluating Finalization-Based Object Lifetime Profiling
 
-In this repository there are the files to execute the experiments for the Evaluating Finalization-Based Object Lifetime Profiling paper. We use [ReBench](https://rebench.readthedocs.io/en/latest/) to orchestate the execution. It has 5 applications to benchmark: [HoneyGinger](https://github.com/tomooda/HoneyGinger), [DataFrame](https://github.com/PolyMathOrg/DataFrame), [Re:Mobidyck](https://github.com/ReMobidyc/ReMobidyc), [Bloc](https://github.com/pharo-graphics/bloc), and [Moose](https://github.com/moosetechnology)
+In this repository there are the files to execute the experiments for the [Evaluating Finalization-Based Object Lifetime Profiling](https://hal.science/hal-04581342v1/document) paper. We use [ReBench](https://rebench.readthedocs.io/en/latest/) to orchestate the execution. It has 5 applications to benchmark: [HoneyGinger](https://github.com/tomooda/HoneyGinger), [DataFrame](https://github.com/PolyMathOrg/DataFrame), [Re:Mobidyck](https://github.com/ReMobidyc/ReMobidyc), [Bloc](https://github.com/pharo-graphics/bloc), and [Moose](https://github.com/moosetechnology)
 
 ## How to install
 
